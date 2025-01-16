@@ -3,39 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   printf_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:35:59 by hbelaih           #+#    #+#             */
-/*   Updated: 2025/01/01 12:36:03 by hbelaih          ###   ########.fr       */
+/*   Updated: 2025/01/15 22:12:10 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-int	ft_putchar(int c)
-{
-	return (write(1, &c, 1));
-}
-
-int	ft_putstr(char *s)
-{
-	int	i;
-
-	if (s == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	i = 0;
-	while (*s)
-	{
-		ft_putchar((int)*s);
-		i++;
-		s++;
-	}
-	return (i);
-}
-
+#include "libft.h"
 int	printdigit(long n, int base)
 {
 	int			i;

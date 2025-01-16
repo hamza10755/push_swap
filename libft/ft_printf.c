@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 12:34:12 by hbelaih           #+#    #+#             */
-/*   Updated: 2025/01/05 15:57:50 by hbelaih          ###   ########.fr       */
+/*   Updated: 2025/01/15 22:06:27 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
+#include <stdarg.h>
 
 int	print_format(char sp, va_list ap)
 {
