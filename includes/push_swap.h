@@ -6,7 +6,7 @@
 /*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:39:39 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/16 22:08:20 by hamzabillah      ###   ########.fr       */
+/*   Updated: 2025/01/17 18:53:27 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ void    radix_sort(t_stack *stack_a, t_stack *stack_b);
 int     get_median(t_stack *stack);
 void    partition_and_sort(t_stack *stack_a, t_stack *stack_b);
 void    handle_small_stack(t_stack *stack_a, t_stack *stack_b);
+void free_split(char **split);
+t_stack *create_and_init_stack(int capacity);
 
 #endif

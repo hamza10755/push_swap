@@ -6,7 +6,7 @@
 /*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:49:37 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/16 20:46:35 by hamzabillah      ###   ########.fr       */
+/*   Updated: 2025/01/17 18:49:00 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,19 @@ void clean_exit(t_stack *stack_a, t_stack *stack_b)
     free_stack(stack_a);
     free_stack(stack_b);
     error_exit();
+}
+
+void free_split(char **split)
+{
+    int i;
+
+    i = 0;
+    if (!split)
+        return;
+    while (split[i])
+    {
+        free(split[i]);
+        i++;
+    }
+    free(split);
 }

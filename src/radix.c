@@ -6,11 +6,12 @@
 /*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:48:40 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/16 22:26:09 by hamzabillah      ###   ########.fr       */
+/*   Updated: 2025/01/17 18:58:17 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 static int get_max_bits(t_stack *stack)
 {
     int max;

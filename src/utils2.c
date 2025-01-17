@@ -6,17 +6,35 @@
 /*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 21:39:44 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/16 22:32:48 by hamzabillah      ###   ########.fr       */
+/*   Updated: 2025/01/17 19:06:11 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+t_stack *create_and_init_stack(int capacity)
+{
+    t_stack *stack;
+
+    stack = (t_stack *)malloc(sizeof(t_stack));
+    if (!stack)
+        return (NULL);
+    stack->numbers = (int *)malloc(sizeof(int) * capacity);
+    if (!stack->numbers)
+    {
+        free(stack);
+        return (NULL);
+    }
+    ft_bzero(stack->numbers, sizeof(int) * capacity);
+    stack->size = 0;
+    stack->capacity = capacity;
+    return (stack);
+}
+
 void sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
     if (is_sorted(stack_a))
         return;
-
     if (stack_a->size <= 5)
         hybrid_sort(stack_a, stack_b);
     else
