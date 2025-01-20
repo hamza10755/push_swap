@@ -1,0 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/16 19:47:22 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/16 22:31:12 by hamzabillah      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/push_swap.h"
+
+int	find_min_position(t_stack *stack)
+{
+	int	i;
+	int	min;
+	int	min_pos;
+
+	i = 1;
+	min = stack->numbers[0];
+	min_pos = 0;
+	while (i < stack->size)
+	{
+		if (stack->numbers[i] < min)
+		{
+			min = stack->numbers[i];
+			min_pos = i;
+		}
+		i++;
+	}
+	return (min_pos);
+}
+
+void	sort_three(t_stack *stack_a)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = stack_a->numbers[0];
+	b = stack_a->numbers[1];
+	c = stack_a->numbers[2];
+	if (a > b && b < c && a < c)
+		sa(stack_a, 1);
+	else if (a > b && b > c)
+	{
+		sa(stack_a, 1);
+		rra(stack_a, 1);
+	}
+	else if (a > b && b < c && a > c)
+		ra(stack_a, 1);
+	else if (a < b && b > c && a < c)
+	{
+		sa(stack_a, 1);
+		ra(stack_a, 1);
+	}
+	else if (a < b && b > c && a > c)
+		rra(stack_a, 1);
+}
+
+void	sort_four(t_stack *stack_a, t_stack *stack_b)
+{
+	int	min_pos;
+
+	min_pos = find_min_position(stack_a);
+	if (min_pos == 1)
+		sa(stack_a, 1);
+	else if (min_pos == 2)
+	{
+		ra(stack_a, 1);
+		ra(stack_a, 1);
+	}
+	else if (min_pos == 3)
+		rra(stack_a, 1);
+	pb(stack_a, stack_b);
+	sort_three(stack_a);
+	pa(stack_a, stack_b);
+}
+
+void	sort_five(t_stack *stack_a, t_stack *stack_b)
+{
+	int	min_pos;
+
+	min_pos = find_min_position(stack_a);
+	if (min_pos == 1)
+		sa(stack_a, 1);
+	else if (min_pos == 2)
+	{
+		ra(stack_a, 1);
+		ra(stack_a, 1);
+	}
+	else if (min_pos == 3)
+	{
+		rra(stack_a, 1);
+		rra(stack_a, 1);
+	}
+	else if (min_pos == 4)
+		rra(stack_a, 1);
+	pb(stack_a, stack_b);
+	sort_four(stack_a, stack_b);
+	pa(stack_a, stack_b);
+}
