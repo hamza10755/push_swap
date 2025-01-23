@@ -1,36 +1,46 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
-LIBDIR = libft
-LIB = $(LIBDIR)/libft.a
-
-SRC =
-
-SRCS := $(addprefix src/,$(SRC))
-OFILES := $(addprefix ofiles/,$(SRC:.c=.o))
-
 NAME = push_swap
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I includes
 
-ofiles/%.o: src/%.c includes/so_long.h | dirs
-	$(CC) $(CFLAGS) -c $< -o $@
+SRC = src
+LIBFTDIR = libft
 
-all : dirs $(NAME)
+SRCS = main.c \
+       ft_swap.c \
+	   ft_push.c \
+	   ft_rotate.c \
+	   ft_reverse_rotate.c \
+	   small_sort.c \
+       utils.c \
+	   radix.c \
+	   radix2.c \
+	   utils2.c \
+       errors.c
 
-$(NAME) : $(OFILES) -L$(LIBDIR) -lft -o $(NAME)
+SRC_FILES = $(addprefix $(SRC)/, $(SRCS))
+OBJ_FILES = $(SRCS:.c=.o)
 
-$(LIB)
-	make -C $(LIBDIR)
+LIBFT = $(LIBFTDIR)/libft.a
 
-clean: 
-	rm -rf ofiles
-	make -C $(LIBDIR) clean
+all: $(NAME)
+
+%.o: $(SRC)/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJ_FILES)
+	@$(CC) $(OBJ_FILES) -L$(LIBFTDIR) -lft -o $(NAME)
+
+$(LIBFT):
+	@make -C $(LIBFTDIR)
+
+clean:
+	@rm -f $(OBJ_FILES)
+	@make -C $(LIBFTDIR) clean
+
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBDIR) fclean
+	@rm -f $(NAME)
+	@make -C $(LIBFTDIR) fclean
 
 re: fclean all
-
-dirs:
-	mkdir -p ofiles
 
 .PHONY: all clean fclean re
