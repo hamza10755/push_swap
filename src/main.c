@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <hbelaih@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:42:00 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/20 23:28:40 by hbelaih          ###   ########.fr       */
+/*   Created: 2025/01/30 01:34:18 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/30 01:50:14 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	init_stacks(char **numbers, int count, t_stack **stack_a,
-		t_stack **stack_b)
+static void	init_stacks(char **numbers, int count, t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 
@@ -36,8 +35,7 @@ static void	init_stacks(char **numbers, int count, t_stack **stack_a,
 	}
 }
 
-static void	fill_stack(char **numbers, int count, t_stack **stack_a,
-		t_stack **stack_b)
+static void	fill_stack(char **numbers, int count, t_stack **stack_a, t_stack **stack_b)
 {
 	int	j;
 
@@ -64,8 +62,7 @@ static void	fill_stack(char **numbers, int count, t_stack **stack_a,
 	}
 }
 
-static void	handle_single_argument(char *arg, t_stack **stack_a,
-		t_stack **stack_b)
+static void	handle_single_argument(char *arg, t_stack **stack_a, t_stack **stack_b)
 {
 	char	**numbers;
 	int		i;
@@ -86,8 +83,7 @@ static void	handle_single_argument(char *arg, t_stack **stack_a,
 	free_split(numbers);
 }
 
-static void	handle_multiple_arguments(int argc, char **argv, t_stack **stack_a,
-		t_stack **stack_b)
+static void	handle_multiple_arguments(int argc, char **argv, t_stack **stack_a, t_stack **stack_b)
 {
 	init_stacks(argv, argc, stack_a, stack_b);
 	fill_stack(argv, argc, stack_a, stack_b);

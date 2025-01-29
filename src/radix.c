@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <hbelaih@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:48:40 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/21 00:15:02 by hbelaih          ###   ########.fr       */
+/*   Created: 2025/01/30 01:34:39 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/30 01:55:27 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,47 +32,7 @@ static int	get_max_bits(t_stack *stack)
 	return (bits);
 }
 
-void	bubble_sort(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = -1;
-	while (++i < size - 1)
-	{
-		j = -1;
-		while (++j < size - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-		}
-	}
-}
-
-int	get_median(t_stack *stack)
-{
-	int	*temp;
-	int	i;
-	int	median;
-
-	temp = malloc(stack->size * sizeof(int));
-	if (!temp)
-		return (-1);
-	i = -1;
-	while (++i < stack->size)
-		temp[i] = stack->numbers[i];
-	bubble_sort(temp, stack->size);
-	median = temp[stack->size / 2];
-	free(temp);
-	return (median);
-}
-
-static void	perform_radix_sort(t_stack *stack_a, t_stack *stack_b)
+void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_bits;
 	int	i;
@@ -98,14 +58,4 @@ static void	perform_radix_sort(t_stack *stack_a, t_stack *stack_b)
 			pa(stack_a, stack_b);
 		i++;
 	}
-}
-
-void	radix_sort(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a->size <= 5)
-	{
-		handle_small_stack(stack_a, stack_b);
-		return ;
-	}
-	perform_radix_sort(stack_a, stack_b);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:47:22 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/16 22:31:12 by hamzabillah      ###   ########.fr       */
+/*   Created: 2025/01/30 01:35:01 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/30 02:02:27 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,16 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);
+}
+
+void	handle_small_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->size == 2 && stack_a->numbers[0] > stack_a->numbers[1])
+		sa(stack_a, 1);
+	else if (stack_a->size == 3)
+		sort_three(stack_a);
+	else if (stack_a->size == 4)
+		sort_four(stack_a, stack_b);
+	else if (stack_a->size == 5)
+		sort_five(stack_a, stack_b);
 }

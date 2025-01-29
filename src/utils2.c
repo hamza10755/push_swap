@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <hbelaih@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 21:39:44 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/21 00:25:38 by hbelaih          ###   ########.fr       */
+/*   Created: 2025/01/30 01:35:38 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/30 01:59:42 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,69 +33,73 @@ t_stack	*create_and_init_stack(int capacity)
 
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	if (is_sorted(stack_a))
-		return ;
 	if (stack_a->size <= 5)
-		hybrid_sort(stack_a, stack_b);
+		handle_small_stack(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
 }
 
-void	restore_stack(t_stack *stack, int min)
+void	normalize_array(int *arr, int size)
 {
+	int	*temp;
 	int	i;
 
 	i = 0;
-	while (i < stack->size)
+	temp = (int *)malloc(size * sizeof(int));
+	if (!temp)
+		return ;
+	while (i < size)
 	{
-		stack->numbers[i] += min;
+		temp[i] = arr[i];
+		i++;
+	}
+	sort_temp_array(temp, size);
+	assign_ranks(arr, temp, size);
+	free(temp);
+}
+
+void	sort_temp_array(int *temp, int size)
+{
+	int	i;
+	int	j;
+	int	t;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (temp[j] > temp[j + 1])
+			{
+				t = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = t;
+			}
+			j++;
+		}
 		i++;
 	}
 }
 
-void	partition_and_sort(t_stack *stack_a, t_stack *stack_b)
+void	assign_ranks(int *arr, int *temp, int size)
 {
-	int	pivot;
-	int	count;
-	int	size;
 	int	i;
+	int	j;
+	int	rank;
 
-	size = stack_a->size;
-	count = 0;
-	pivot = get_median(stack_a);
 	i = 0;
 	while (i < size)
 	{
-		if (stack_a->numbers[0] <= pivot)
+		rank = 0;
+		j = 0;
+		while (j < size)
 		{
-			pb(stack_a, stack_b);
-			count++;
+			if (temp[j] < arr[i])
+				rank++;
+			j++;
 		}
-		else
-			ra(stack_a, 1);
-		i++;
-	}
-	hybrid_sort(stack_a, stack_b);
-	while (count--)
-		pa(stack_a, stack_b);
-}
-
-void	normalize_stack(t_stack *stack, int *min)
-{
-	int	i;
-
-	*min = stack->numbers[0];
-	i = 1;
-	while (i < stack->size)
-	{
-		if (stack->numbers[i] < *min)
-			*min = stack->numbers[i];
-		i++;
-	}
-	i = 0;
-	while (i < stack->size)
-	{
-		stack->numbers[i] -= *min;
+		arr[i] = rank;
 		i++;
 	}
 }

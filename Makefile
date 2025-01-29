@@ -13,7 +13,6 @@ SRCS = main.c \
 	   small_sort.c \
        utils.c \
 	   radix.c \
-	   radix2.c \
 	   utils2.c \
        errors.c
 

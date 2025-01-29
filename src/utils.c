@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelaih <hbelaih@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hamzabillah <hamzabillah@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 19:49:04 by hamzabillah       #+#    #+#             */
-/*   Updated: 2025/01/21 00:25:29 by hbelaih          ###   ########.fr       */
+/*   Created: 2025/01/30 01:35:20 by hamzabillah       #+#    #+#             */
+/*   Updated: 2025/01/30 01:40:14 by hamzabillah      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
